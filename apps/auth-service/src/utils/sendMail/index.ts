@@ -2,11 +2,16 @@ import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import path from 'path';
 import ejs from 'ejs';
-dotenv.config();
-
+dotenv.config({ path: path.join(process.cwd(), '.env') });
+console.log("SMTP Config:", {
+  service: process.env.SMTP_SERVICE,
+  user: process.env.SMTP_USER,
+  pass: process.env.SMTP_PASS,
+});
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: Number(process.env.SMTP_PORT) || 587,
+  secure: process.env.SMTP_PORT === "465", // Use true for 465, false for other ports
   service: process.env.SMTP_SERVICE,
   auth: {
     user: process.env.SMTP_USER,
@@ -24,6 +29,7 @@ const renderEmailTemplate = async (
 ): Promise<string> => {
   const templatePath = path.join(
     process.cwd(),
+    "apps",
     "auth-service",
     "src",
     "utils",

@@ -1,0 +1,43 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Auth Service API",
+    "description": "Automatically generated Swagger docs",
+    "version": "1.0.0"
+  },
+  "host": "localhost:6001",
+  "basePath": "/api",
+  "schemes": ["http"],
+  "paths": {
+    "/user-register": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "rongcaiyu"
+                },
+                "email": {
+                  "example": "3616104980@qq.com"
+                },
+                "password": {
+                  "example": "12345677"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

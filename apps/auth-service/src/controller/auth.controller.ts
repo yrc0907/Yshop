@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import prisma from "../../../../packages/lib/prisma";
 import { ValidationError } from "../../../../packages/error-handler";
-import { checkOtpRestrictions } from "../utils/auth.helper";
+import { checkOtpRestrictions, sendOtp, trackOtpRequests } from "../utils/auth.helper";
 
 export const userRegistration = async (
   req: Request,
@@ -18,10 +18,13 @@ export const userRegistration = async (
     }
 
     await checkOtpRestrictions(email, next)
-    const newUser = await prisma.user.create({ data: { name, email, imagesId: "" } })
 
-    res.status(201).json({ message: "User created successfully", user: newUser })
+    await trackOtpRequests(email, next)
+
+    await sendOtp(name, email, "user-activation-mail")
+
+    res.status(200).json({ message: "OTP sent successfully, please check your email" })
   } catch (error) {
-    next(error);
+    return next(error);
   }
 }

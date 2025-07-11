@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activate Your Yshop Account</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background-color: #f4f7f6;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .email-header {
+      background-color: #7158e2;
+      /* A modern purple, feels fresh and trustworthy for e-commerce */
+      color: #ffffff;
+      padding: 20px 30px;
+      text-align: center;
+    }
+
+    .email-header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .email-body {
+      padding: 30px 40px;
+      color: #555555;
+      line-height: 1.7;
+    }
+
+    .email-body p {
+      margin: 0 0 15px;
+    }
+
+    .otp-code-wrapper {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .otp-code {
+      display: inline-block;
+      font-size: 28px;
+      font-weight: 600;
+      color: #7158e2;
+      background-color: #f4f7f6;
+      padding: 15px 30px;
+      border-radius: 8px;
+      letter-spacing: 4px;
+      border: 1px dashed #d1cceb;
+    }
+
+    .email-footer {
+      text-align: center;
+      font-size: 14px;
+      color: #999999;
+      padding: 20px 30px;
+      border-top: 1px solid #eeeeee;
+    }
+
+    .email-footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="email-container">
+    <div class="email-header">
+      <h1>Welcome to Yshop!</h1>
+    </div>
+    <div class="email-body">
+      <p>Hi <%= name %>,</p>
+      <p>Thank you for registering with Yshop! To complete your activation, please use the One-Time Password (OTP)
+        below.</p>
+      <div class="otp-code-wrapper">
+        <div class="otp-code">
+          <%= otp %>
+        </div>
+      </div>
+      <p>This code is valid for the next <strong>5 minutes</strong>. If you did not initiate this request, you can
+        safely ignore this email.</p>
+      <p>Best regards,<br>The Yshop Team</p>
+    </div>
+    <div class="email-footer">
+      <p>&copy; 2025 Yshop. All Rights Reserved.</p>
+    </div>
+  </div>
+</body>
+
+</html>

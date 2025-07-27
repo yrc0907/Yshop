@@ -39,6 +39,14 @@ export class UnauthorizedError extends AppError {
   }
 }
 
+// Auth error
+
+export class AuthError extends AppError {
+  constructor(message: string = "Authentication error", details?: any) {
+    super(message, 401, true, details);
+  }
+}
+
 // Forbidden error
 
 export class ForbiddenError extends AppError {
